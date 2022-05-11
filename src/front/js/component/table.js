@@ -4,24 +4,28 @@ import { Link } from "react-router-dom";
 
 export const Table = props => {
 	return (
-		<table className="table table-hover">
-			<thead>
-				<tr>
-					<th scope="col"> id </th> <th scope="col"> First </th> <th scope="col"> Last </th>{" "}
-					<th scope="col"> Email </th>{" "}
-				</tr>{" "}
-			</thead>{" "}
-			<tbody>
-				{" "}
-				{props.users.length > 0 &&
-					props.users.map((user, index) => (
-						<tr key={index}>
-							<th scope="row">{user.id}</th> <td>{user.first_name} </td> <td>{user.last_name} </td>{" "}
-							<td> {user.email} </td>{" "}
-						</tr>
-					))}{" "}
-			</tbody>{" "}
-		</table>
+		<div className="container">
+			<table className="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col"> id </th> <th scope="col"> First </th> <th scope="col"> Last </th>{" "}
+						<th scope="col"> Email </th>
+						<th scope="col"> Age </th>
+						<th scope="col"> Favorite Color </th>{" "}
+					</tr>{" "}
+				</thead>{" "}
+				<tbody>
+					{" "}
+					{props.users.length > 0 &&
+						props.users.map((user, index) => (
+							<tr key={index}>
+								<th scope="row">{user.id}</th> <td>{user.first_name} </td> <td>{user.last_name} </td>{" "}
+								<td> {user.email} </td> <td>{user.age} </td> <td>{user.favorite_color} </td>{" "}
+							</tr>
+						))}{" "}
+				</tbody>{" "}
+			</table>
+		</div>
 	);
 };
 
