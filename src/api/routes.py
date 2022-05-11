@@ -8,11 +8,9 @@ from api.utils import generate_sitemap, APIException
 api = Blueprint('api', __name__)
 
 
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
-
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend"
-    }
-
-    return jsonify(response_body), 200
+@api.route('/users', methods=['GET'])
+def get_all_users():
+   user = User.query.all()
+   
+   serialized_users = [item.serialize() for item in user]
+   return jsonify(serialized_users), 200
