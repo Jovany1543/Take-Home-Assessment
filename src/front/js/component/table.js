@@ -20,7 +20,8 @@ export const Table = props => {
 						props.users.map((user, index) => (
 							<tr key={index}>
 								<th scope="row">{user.id}</th> <td>{user.first_name} </td> <td>{user.last_name} </td>{" "}
-								<td> {user.email} </td> <td>{user.age} </td> <td>{user.favorite_color} </td>{" "}
+								<td> {user.email.toLowerCase()} </td> <td>{user.age} </td>{" "}
+								<td>{user.favorite_color.toLowerCase()}</td>{" "}
 							</tr>
 						))}{" "}
 				</tbody>{" "}
