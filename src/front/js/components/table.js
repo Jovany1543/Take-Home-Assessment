@@ -31,6 +31,7 @@ export const Table = props => {
 			<table className="table table-hover">
 				<thead>
 					<tr>
+						<th />
 						{headers.map(row => (
 							<th
 								key={row.key}
@@ -49,11 +50,28 @@ export const Table = props => {
 					{userData.length > 0 &&
 						userData.map((user, index) => (
 							<tr key={index}>
+								<td>
+									<Link to={"/edit/" + user.id}>
+										<i className="fas fa-user-edit" />
+									</Link>
+									{" / "}
+									<Link>
+										<i
+											className="fas fa-trash-alt"
+											onClick={() => {
+												setUserData(userData.filter((item, i) => index != i));
+											}}
+										/>
+									</Link>
+								</td>
 								<th scope="row">{user.id}</th> <td>{user.first_name} </td> <td>{user.last_name} </td>{" "}
 								<td> {user.email.toLowerCase()} </td> <td>{user.age} </td>{" "}
 								<td>{user.favorite_color.toLowerCase()}</td>{" "}
 							</tr>
 						))}{" "}
+					<div>
+						<i className="fas fa-plus" />
+					</div>
 				</tbody>{" "}
 			</table>
 		</div>

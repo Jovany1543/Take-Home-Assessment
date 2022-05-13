@@ -1,13 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
+import ScrollToTop from "./components/scrollToTop";
 
-import { Home } from "./pages/home";
-import { Single } from "./pages/single";
+import { Home } from "./views/home";
+import { Edit } from "./views/edit";
+import { AddNew } from "./views/addNew";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import { Navbar } from "./components/navbar";
+import { Footer } from "./components/footer";
 
 const Layout = () => {
 	const basename = process.env.BASENAME || "";
@@ -21,8 +22,11 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
+						<Route exact path="/addNew">
+							<AddNew />
+						</Route>
+						<Route exact path="/edit/:theid">
+							<Edit />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
