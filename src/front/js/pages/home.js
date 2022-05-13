@@ -6,9 +6,5 @@ import { Table } from "../component/table.js";
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 	console.log(store.users);
-	return (
-		<div className="text-center mt-5">
-			<Table users={store.users} />
-		</div>
-	);
+	return <div className="text-center mt-5">{store.users.length > 0 && <Table users={store.users} />}</div>;
 };
