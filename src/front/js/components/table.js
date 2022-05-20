@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export const Table = props => {
+	const { actions } = useContext(Context);
 	const [userData, setUserData] = useState(props.users);
 	const [order, setOrder] = useState("ASC");
 	const sortBy = col => {
@@ -25,7 +27,7 @@ export const Table = props => {
 		{ key: "age", label: "Age" },
 		{ key: "favorite_color", label: "Favorite Color" }
 	];
-	// onClick={() => sortBy(row.key)}
+
 	return (
 		<div className="container">
 			<table className="table table-hover">
@@ -59,7 +61,7 @@ export const Table = props => {
 										<i
 											className="fas fa-trash-alt"
 											onClick={() => {
-												setUserData(userData.filter((item, i) => index != i));
+												actions.deleteUser(user.id);
 											}}
 										/>
 									</Link>
@@ -70,7 +72,9 @@ export const Table = props => {
 							</tr>
 						))}{" "}
 					<div>
-						<i className="fas fa-plus" />
+						<Link>
+							<i className="fas fa-plus" />
+						</Link>
 					</div>
 				</tbody>{" "}
 			</table>

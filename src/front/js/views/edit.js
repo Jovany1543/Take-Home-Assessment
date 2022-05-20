@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.scss";
 import { Link, useParams } from "react-router-dom";
@@ -6,14 +6,15 @@ import { Link, useParams } from "react-router-dom";
 export const Edit = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
-
+	const [userData, setUserData] = useState(store.users[params.id]);
+	console.log(userData);
 	return (
 		<div className="text-center mt-5">
 			<div className="container w-50">
 				<form>
 					<div className="mb-3">
 						<label className="form-label">ID</label>
-						<input type="text" className="form-control" readOnly />
+						<input type="text" className="form-control" readOnly placeholder="" />
 					</div>
 					<div className="mb-3">
 						<label className="form-label">First Name</label>

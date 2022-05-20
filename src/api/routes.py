@@ -10,7 +10,15 @@ api = Blueprint('api', __name__)
 
 @api.route('/users', methods=['GET'])
 def get_all_users():
-   user = User.query.all()
+   users = User.query.all()
    
-   serialized_users = [item.serialize() for item in user]
+   serialized_users = [item.serialize() for item in users]
+   return jsonify(serialized_users), 200
+
+@api.route('/users/<int:user_id>/delete', methods=['DELETE'])
+def delUser(user_id):
+   User.query.filter_by(id=user_id).delete()
+   db.session.commit()
+   updatedUsers = User.query.all()
+   serialized_users = [item.serialize() for item in updatedUsers]
    return jsonify(serialized_users), 200
