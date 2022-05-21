@@ -33,7 +33,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ users: data }))
 					.catch(error => console.log("Error loading", error));
 			},
-			editUser: () => {},
+			editUser: payload => {
+				fetch(`${base_url}/api/users/${payload.id}/edit`, {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(payload)
+				})
+					.then(res => {
+						return res.json();
+					})
+					.then(data => setStore({ users: data }));
+			},
 			deleteUser: user_id => {
 				fetch(`${base_url}/api/users/${user_id}/delete`, {
 					method: "DELETE"

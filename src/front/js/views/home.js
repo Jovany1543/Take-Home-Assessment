@@ -4,9 +4,6 @@ import "../../styles/home.scss";
 import { Table } from "../components/table.js";
 
 export const Home = () => {
-	return (
-		<div className="text-center mt-5">
-			<Table />
-		</div>
-	);
+	const { store, actions } = useContext(Context);
+	return <div className="text-center mt-5">{store.users.length > 0 && <Table />}</div>;
 };

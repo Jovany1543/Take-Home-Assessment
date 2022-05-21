@@ -53,7 +53,7 @@ export const Table = props => {
 						userData.map((user, index) => (
 							<tr key={index}>
 								<td>
-									<Link to={"/edit/" + user.id}>
+									<Link to={"/edit/" + index}>
 										<i className="fas fa-user-edit" />
 									</Link>
 									{" / "}
