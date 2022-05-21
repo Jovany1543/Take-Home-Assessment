@@ -18,13 +18,13 @@ tasks:
         psql -U gitpod -c 'CREATE DATABASE example;' &&
         psql -U gitpod -c 'CREATE EXTENSION unaccent;' -d example &&
         pipenv run init && 
-        pipenv run upgrade &&
         pipenv run migrate && 
         pipenv run upgrade &&
         python docs/assets/greeting.py back
+        pipenv run start
     - command: >
         nvm install 14 &&
         npm install &&
         python docs/assets/greeting.py front &&
-        pipenv run start
+        
       openMode: split-right
