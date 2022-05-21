@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export const Table = props => {
-	const { actions } = useContext(Context);
-	const [userData, setUserData] = useState(props.users);
+	const { store, actions } = useContext(Context);
+	const [userData, setUserData] = useState(store.users);
 	const [order, setOrder] = useState("ASC");
 	const sortBy = col => {
 		if (order === "ASC") {
@@ -72,7 +72,7 @@ export const Table = props => {
 							</tr>
 						))}{" "}
 					<div>
-						<Link>
+						<Link to="/addNew">
 							<i className="fas fa-plus" />
 						</Link>
 					</div>
