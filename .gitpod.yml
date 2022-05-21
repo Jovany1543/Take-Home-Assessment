@@ -24,6 +24,6 @@ tasks:
     - command: >
         nvm install 14 &&
         npm install &&
-        python docs/assets/greeting.py front &&
+        npm run start
         
       openMode: split-right
