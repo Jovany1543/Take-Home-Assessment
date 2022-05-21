@@ -25,5 +25,6 @@ tasks:
     - command: >
         nvm install 14 &&
         npm install &&
-        python docs/assets/greeting.py front
+        python docs/assets/greeting.py front &&
+        pipenv run start
       openMode: split-right
